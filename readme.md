@@ -39,6 +39,7 @@
 
 ## What resources do you recommend for interested students? ##
 - I followed a great tutorial- https://serverless-stack.com/.  But, it's very long.  There are likely shorter, simpler ones out there.
+- As mentioned below, I haven't gotten through the full tutorial (only got up to page 131)
 
 ## What article or forum was most helpful to you in learning this? ##
 - here's a good article, outlining some of the pros and cons: http://www.iheavy.com/2017/04/15/top-amazon-lambda-questions-hiring-serverless-expert-interview/
@@ -52,6 +53,8 @@
 - Unfortunately, running my example will be really difficult...SORRY!  I should have chosen something simpler, but it's kind of inherent to the exercise to be complicated...
 - ...you need to set up an AWS account, including Cognito, DynamoDB, S3, and IAM in order to do the tutorial that I did.
 - You also have to npm install all the dependendies in the backend app (notes-app-api) and in the frontend (notes-app-client)
+- NOTE: I only got up to page 131 of the tutorial ('Create Containers'), so haven't had the chance to flesh out the frontend and connect it to the backend
+
 
 ## Use your subject. ##
 - There are alternatives to Lambda, but if you use Lambda, you need to set up an AWS account, configure your backend API to interact with the AWS account, and then set up your frontend to call the backend API
