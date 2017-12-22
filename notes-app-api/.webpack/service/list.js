@@ -92,27 +92,26 @@ var main = exports.main = function () {
           case 0:
             params = {
               TableName: "notes",
-              // 'Key' defines the partition key and sort key of the item to be retrieved
-              // - 'userId': Identity Pool identity id of the authenticated user
-              // - 'noteId': path parameter
-              Key: {
-                userId: event.requestContext.identity.cognitoIdentityId,
-                noteId: event.pathParameters.id
+              // 'KeyConditionExpression' defines the condition for the query
+              // - 'userId = :userId': only return items with matching 'userId'
+              //   partition key
+              // 'ExpressionAttributeValues' defines the value in the condition
+              // - ':userId': defines 'userId' to be Identity Pool identity id
+              //   of the authenticated user
+              KeyConditionExpression: "userId = :userId",
+              ExpressionAttributeValues: {
+                ":userId": event.requestContext.identity.cognitoIdentityId
               }
             };
             _context.prev = 1;
             _context.next = 4;
-            return dynamoDbLib.call("get", params);
+            return dynamoDbLib.call("query", params);
 
           case 4:
             result = _context.sent;
 
-            if (result.Item) {
-              // Return the retrieved item
-              callback(null, (0, _responseLib.success)(result.Item));
-            } else {
-              callback(null, (0, _responseLib.failure)({ status: false, error: "Item not found." }));
-            }
+            // Return the matching list of items in response body
+            callback(null, (0, _responseLib.success)(result.Items));
             _context.next = 11;
             break;
 
