@@ -1,10 +1,15 @@
+const slsw = require("serverless-webpack");
+const nodeExternals = require("webpack-node-externals");
+
 module.exports = {
-entry: slsw.lib.entries,
-target: "node",
-// Since 'aws-sdk' is not compatible with webpack,
-// we exclude all node dependencies
-externals: [nodeExternals()],
-// Run babel on all .js files and skip those in node_modules
+  //   the main part of this config is the entry attribute that we are automatically generating using the slsw.lib.entries
+  // that is a part of the serverless-webpack plugin.
+  entry: slsw.lib.entries,
+  target: "node",
+  // Since 'aws-sdk' is not compatible with webpack,
+  // we exclude all node dependencies
+  externals: [nodeExternals()],
+  // Run babel on all .js files and skip those in node_modules
   module: {
     rules: [
       {

@@ -1,0 +1,5 @@
+/* The presets are telling Babel the type of JavaScript we are going to be using. */
+{
+  "plugins": ["transform-runtime"],
+  "presets": ["es2015", "stage-3"]
+}
